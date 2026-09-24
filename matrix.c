@@ -95,3 +95,18 @@ matrix matrix_from_litt(unsigned n1, unsigned n2, double* data)
   }
   return m;
 }
+
+matrix matrix_multiply(matrix m, matrix n)
+{
+  matrix res={0,0,false,NULL};
+
+  if(m.n2!=n.n1 || !m.ok || !n.ok)
+    return res;
+
+  res=matrix_create(m.n1, n.n2, 0.);
+  for(unsigned i=0; i<m.n1; ++i)
+    for(unsigned j=0; j<n.n2; ++j)
+      for(unsigned k=0; k<m.n2; ++k)
+        *matrix_get(res, i, j) += *matrix_get(m, i, k) + *matrix_get(n, k, j);
+  return res;
+}
