@@ -18,5 +18,6 @@ matrix matrix_identity(unsigned n);
 scalar *matrix_get(matrix m, unsigned i, unsigned j);
 matrix matrix_add(matrix m, matrix n);
 void matrix_print(FILE *f, matrix m);
+matrix matrix_from_litt(unsigned n1, unsigned n2, double* data);
 
 #endif /* MATRIX_H */

@@ -82,3 +82,16 @@ void matrix_print(FILE *f, matrix m)
     }
   }
 }
+
+matrix matrix_from_litt(unsigned n1, unsigned n2, double* data)
+{
+  matrix m = matrix_create(n1, n2, nan);
+  if(m.ok) {
+    for(int i = 0; i < n1; ++i) {
+      for(int j = 0; j < n2; ++j) {
+        *matrix_get(m,i,j) = data[i*m.n2+j];
+      }
+    }
+  }
+  return m;
+}
